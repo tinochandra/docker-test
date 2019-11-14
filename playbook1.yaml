@@ -1,0 +1,24 @@
+- hosts: webserver
+  tasks:
+    - name: install phyton-docker ubuntu
+      apt:
+        name: python-docker
+        state: present
+      when:
+        - ansible_sistribution == "ubuntu"
+    - name: install python-docker CentOS
+      yum:
+        name: python-docker
+        state: present
+      when:
+        - ansible_sistribution == "CentOS"
+    - name: run container
+      docker-continer:
+        name: container
+        detach: yes
+        image: "tinochandra/httpd:6"
+        state: started
+        exposed_ports:
+          - 80/tcp
+        published_ports:
+          -8085:80
