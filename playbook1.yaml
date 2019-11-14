@@ -5,13 +5,13 @@
         name: python-docker
         state: present
       when:
-        - ansible_sistribution == "ubuntu"
+        - ansible_distribution == "ubuntu"
     - name: install python-docker CentOS
       yum:
         name: python-docker
         state: present
       when:
-        - ansible_sistribution == "CentOS"
+        - ansible_distribution == "CentOS"
     - name: run container
       docker_container:
         name: container
