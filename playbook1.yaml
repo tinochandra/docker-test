@@ -13,7 +13,7 @@
       when:
         - ansible_sistribution == "CentOS"
     - name: run container
-      docker_continer:
+      docker_container:
         name: container
         detach: yes
         image: "tinochandra/httpd:6"
